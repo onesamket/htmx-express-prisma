@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>htmx todo app</title>
+    <link rel="stylesheet" href="./dist/output.css" />
+    <script
+      src="https://unpkg.com/htmx.org@1.9.9"
+      integrity="sha384-QFjmbokDn2DjBjq+fM+8LUIVrAgqcNW2s0PjAxHETgRn9l4fvX31ZxDxvwQnyMOX"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- header section  -->
+    <header class="navbar bg-base-100 px-20 shadow">
+      <div class="flex-1">
+        <a href="./index.html" class="btn btn-ghost text-xl">HTMX</a>
+      </div>
+      <div class="flex-none px-10">
+        <ul class="menu menu-horizontal px-1">
+          <li><a href="./index.html">create todo</a></li>
+          <li><a href="./todo.html">all todos </a></li>
+        </ul>
+      </div>
+    </header>
+    <!-- end of header section  -->
+
+    <!-- main section -->
+    <main id="main" class="flex flex-col items-center min-h-screen">
+      <h3>create todo</h3>
+      <p id="message" class="text-green-500"></p>
+      <form
+        hx-post="http://localhost:5000/todo"
+        class="w-1/2 flex flex-col space-y-4 p-12"
+        hx-target="#message"
+      >
+        <input
+          class="input input-bordered w-full focus:"
+          name="title"
+          id="name"
+          type="text"
+          placeholder="todo title"
+        />
+        <textarea
+          required
+          class="textarea textarea-bordered"
+          placeholder="todo description"
+          name="content"
+          id="content"
+        ></textarea>
+        <button class="btn btn-primary text-white" type="submit">
+          add todo
+        </button>
+      </form>
+    </main>
+    <!-- end of man section  -->
+
+    <!-- footer section  -->
+    <footer class="footer items-center p-4 bg-neutral text-neutral-content">
+      <aside class="items-center grid-flow-col">
+        <img
+          src="https://github.com/onesamket.png"
+          alt="profile"
+          class="w-10 h-10 rounded-full"
+        />
+        <p>Code by Teddy</p>
+      </aside>
+      <nav class="flex space-x-2 items-center">
+        <a href="https://x.com/onesamket"
+          ><img
+            width="30"
+            height="30"
+            src="https://img.icons8.com/ios/50/x.png"
+            alt="x"
+          />
+        </a>
+        <a href="https://github.com/onesamket"
+          ><img
+            width="48"
+            height="48"
+            src="https://img.icons8.com/sf-regular/48/github.png"
+            alt="github"
+        /></a>
+      </nav>
+    </footer>
+    <!-- end of footer  -->
+  </body>
+</html>

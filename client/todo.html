@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>all todos</title>
+    <link rel="stylesheet" href="./dist/output.css" />
+    <script
+      src="https://unpkg.com/htmx.org@1.9.9"
+      integrity="sha384-QFjmbokDn2DjBjq+fM+8LUIVrAgqcNW2s0PjAxHETgRn9l4fvX31ZxDxvwQnyMOX"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body
+    hx-trigger="load"
+    hx-get="http://localhost:5000/todo"
+    hx-target="#result"
+  >
+    <!-- header section  -->
+    <header class="navbar bg-base-100 px-20 shadow">
+      <div class="flex-1">
+        <a href="./index.html" class="btn btn-ghost text-xl">HTMX</a>
+      </div>
+      <div class="flex-none px-10">
+        <ul class="menu menu-horizontal px-1">
+          <li><a href="./index.html">create todo</a></li>
+          <li><a href="./todo.html">all todos </a></li>
+        </ul>
+      </div>
+    </header>
+    <!-- end of header section  -->
+
+    <section class="min-h-screen" id="result"></section>
+
+    <!-- footer section  -->
+    <footer class="footer items-center p-4 bg-neutral text-neutral-content">
+      <aside class="items-center grid-flow-col">
+        <img
+          src="https://github.com/onesamket.png"
+          alt="profile"
+          class="w-10 h-10 rounded-full"
+        />
+        <p>Code by Teddy</p>
+      </aside>
+      <nav class="flex space-x-2 items-center">
+        <a href="https://x.com/onesamket"
+          ><img
+            width="30"
+            height="30"
+            src="https://img.icons8.com/ios/50/x.png"
+            alt="x"
+          />
+        </a>
+        <a href="https://github.com/onesamket"
+          ><img
+            width="48"
+            height="48"
+            src="https://img.icons8.com/sf-regular/48/github.png"
+            alt="github"
+        /></a>
+      </nav>
+    </footer>
+    <!-- end of footer  -->
+    <!-- script section  -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Your script to execute after the DOM content has loaded
+        const mainSection = document.getElementById("result");
+        console.log(mainSection.innerHTML);
+      });
+
+      document.body.addEventListener("htmx:afterRequest", function (event) {
+        console.log("loading...");
+        var responseText = event.detail.response;
+        console.log(responseText);
+      });
+    </script>
+  </body>
+</html>
